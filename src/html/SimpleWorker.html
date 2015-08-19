@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <p>Prime found:
+        <span id="state" style="background-color:#09F">0</span>
+    </p>
+    <script type="text/javascript">
+        var state = document.getElementById("state");
+        if (window.Worker) {
+            var worker = new Worker("SimpleWorker.js");
+
+            worker.onmessage = function (event) {
+                state.textContent = event.data;
+                if (event.data > 5000)
+                    worker.terminate();
+            }
+
+            worker.onerror = function (e) {
+                alert("Error " + e.lineno + "!:" + e.message);
+            }
+
+        }
+        else {
+            alert("Can not use worker!");
+        }
+    </script>
+</body>
+</html>
