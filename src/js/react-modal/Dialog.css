@@ -1,0 +1,11 @@
+.DialogWrapper {
+  display: block;
+}
+
+.Dialog_overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
